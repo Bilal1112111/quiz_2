@@ -19,6 +19,7 @@ class CustomSliverAppBar extends StatelessWidget {
       actions: actions,
       title: title,
       pinned: true,
+      automaticallyImplyLeading: false,
       expandedHeight: AppSize.s100 * 2.3,
       backgroundColor: ColorManager.primaryColor,
       flexibleSpace: FlexibleSpaceBar(

@@ -28,7 +28,7 @@ class ShoppingCartScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(
-            left: AppPadding.p30, right: AppPadding.p30, top: AppPadding.p40),
+            left: AppPadding.p20, right: AppPadding.p20, top: AppPadding.p40),
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[

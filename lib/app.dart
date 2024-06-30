@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ptc2d/screens/initial_screen.dart';
+import 'package:ptc2d/screens/on_boarding/on_boarding_screen.dart';
 
 import 'core/utils/theme_manager.dart';
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeManager.appTheme,
-      home: MyHomePage(),
+      home: OnBoardingScreen(),
     );
   }
 }

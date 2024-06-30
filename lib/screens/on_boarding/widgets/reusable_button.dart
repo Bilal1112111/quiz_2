@@ -9,14 +9,15 @@ import '../../../core/utils/values_manager.dart';
 class ReusableButton extends StatelessWidget {
   const ReusableButton({
     super.key,
+    this.onPressed,
   });
-
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 260,
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: onPressed,
         height: AppSize.s70,
         color: ColorManager.custom1WhiteColor,
         shape: RoundedRectangleBorder(

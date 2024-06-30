@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ptc2d/core/utils/assets_manager.dart';
 import 'package:ptc2d/core/utils/color_manager.dart';
+import 'package:ptc2d/screens/initial_screen.dart';
 import 'package:ptc2d/screens/on_boarding/widgets/page_view_info.dart';
 import 'package:ptc2d/screens/on_boarding/widgets/reusable_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -72,8 +73,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.12,
                 ),
-                const Center(
-                  child: ReusableButton(),
+                Center(
+                  child: ReusableButton(
+                      onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyHomePage(),
+                            ),
+                          )),
                 ),
               ],
             ),
