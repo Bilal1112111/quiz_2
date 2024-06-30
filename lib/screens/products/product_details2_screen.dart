@@ -11,7 +11,7 @@ import '../../core/utils/icon_manager.dart';
 import '../../core/utils/string_manager.dart';
 import '../../core/utils/style_manager.dart';
 import '../../core/utils/values_manager.dart';
-import '../categories/widgets/header_icon.dart';
+import '../widgets/custom_app_bar.dart';
 
 class ProductDetails2Screen extends StatefulWidget {
   ProductDetails2Screen({super.key});
@@ -27,58 +27,9 @@ class _ProductDetails2ScreenState extends State<ProductDetails2Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        backgroundColor: ColorManager.whiteColor,
-        leadingWidth: MediaQuery.of(context).size.width * 0.75,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppPadding.p24),
-          child: Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  size: AppSize.s16,
-                ),
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: AppMargin.m10),
-            child: Row(
-              children: [
-                Stack(
-                  children: [
-                    const HeaderIcon(
-                      icon: IconManager.shoppingBag,
-                      color: ColorManager.custom1BlackColor,
-                    ),
-                    Positioned(
-                      height: AppSize.s20,
-                      width: AppSize.s20,
-                      left: AppSize.s20,
-                      bottom: AppSize.s18,
-                      child: CircleAvatar(
-                        backgroundColor: ColorManager.customOrangeColor,
-                        child: Text(
-                          '3',
-                          style: StyleManager.w600TextStyle(
-                            color: ColorManager.whiteColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+      appBar: const PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: AppBarCustom(),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -106,7 +57,6 @@ class _ProductDetails2ScreenState extends State<ProductDetails2Screen> {
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.2,
-                    width: MediaQuery.of(context).size.width,
                     child: Row(
                       children: [
                         SizedBox(
@@ -139,7 +89,6 @@ class _ProductDetails2ScreenState extends State<ProductDetails2Screen> {
                         const Spacer(),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.15,
-                          height: MediaQuery.of(context).size.height * 0.18,
                           decoration: const BoxDecoration(
                             color: ColorManager.custom2WhiteColor,
                             borderRadius: BorderRadius.all(

@@ -4,14 +4,13 @@ import 'package:ptc2d/screens/products/widgets/custom_rating_bar.dart';
 import 'package:ptc2d/screens/products/widgets/page_indicator.dart';
 import 'package:ptc2d/screens/products/widgets/reusable_check_out_button.dart';
 import 'package:ptc2d/screens/products/widgets/reusable_menu_template.dart';
+import 'package:ptc2d/screens/widgets/custom_app_bar.dart';
 
 import '../../core/utils/assets_manager.dart';
 import '../../core/utils/color_manager.dart';
-import '../../core/utils/icon_manager.dart';
 import '../../core/utils/string_manager.dart';
 import '../../core/utils/style_manager.dart';
 import '../../core/utils/values_manager.dart';
-import '../categories/widgets/header_icon.dart';
 
 class ProductDetails1Screen extends StatefulWidget {
   ProductDetails1Screen({super.key});
@@ -27,108 +26,54 @@ class _ProductDetails1ScreenState extends State<ProductDetails1Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
-      appBar: AppBar(
-        surfaceTintColor: Colors.transparent,
-        backgroundColor: ColorManager.whiteColor,
-        leadingWidth: MediaQuery.of(context).size.width * 0.75,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppPadding.p24),
-          child: Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  size: AppSize.s16,
-                ),
-              ),
-              Text(
-                StringManager.product1Details,
-                style: StyleManager.w400TextStyle(
-                  size: AppSize.s16,
-                ),
-              ),
-            ],
-          ),
+      appBar: const PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: AppBarCustom(
+          title: StringManager.product1Details,
         ),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: AppMargin.m10),
-            child: Row(
-              children: [
-                Stack(
-                  children: [
-                    const HeaderIcon(
-                      icon: IconManager.shoppingBag,
-                      color: ColorManager.custom1BlackColor,
-                    ),
-                    Positioned(
-                      height: AppSize.s20,
-                      width: AppSize.s20,
-                      left: AppSize.s20,
-                      bottom: AppSize.s18,
-                      child: CircleAvatar(
-                        backgroundColor: ColorManager.customOrangeColor,
-                        child: Text(
-                          '3',
-                          style: StyleManager.w600TextStyle(
-                            color: ColorManager.whiteColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
-      body: Column(
-        children: [
-          AspectRatio(
-            aspectRatio: 2.4,
-            child: PageView.builder(
-              itemCount: 3,
-              physics: const PageScrollPhysics(),
-              controller: _pageController,
-              onPageChanged: (int page) {
-                setState(() {
-                  _currentPage = page;
-                });
-              },
-              itemBuilder: (context, index) {
-                return Center(
-                  child: Image.asset(
-                    AssetsManager.picPlaceHolder,
-                    width: AppSize.s60,
-                    height: AppSize.s60,
-                    color: ColorManager.custom4GreyColor,
-                    fit: BoxFit.cover,
-                  ),
-                );
-              },
-            ),
-          ),
-          PageIndicator(pageController: _pageController),
-          const SizedBox(
-            height: AppSize.s30,
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width - AppSize.s30,
-            height: MediaQuery.of(context).size.height * 0.659,
-            decoration: BoxDecoration(
-              color: ColorManager.custom4GreyColor.withOpacity(0.05),
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(AppSize.s24),
-                topLeft: Radius.circular(AppSize.s24),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            AspectRatio(
+              aspectRatio: 2.4,
+              child: PageView.builder(
+                itemCount: 3,
+                physics: const PageScrollPhysics(),
+                controller: _pageController,
+                onPageChanged: (int page) {
+                  setState(() {
+                    _currentPage = page;
+                  });
+                },
+                itemBuilder: (context, index) {
+                  return Center(
+                    child: Image.asset(
+                      AssetsManager.picPlaceHolder,
+                      width: AppSize.s60,
+                      height: AppSize.s60,
+                      color: ColorManager.custom4GreyColor,
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                },
               ),
             ),
-            child: Padding(
+            PageIndicator(pageController: _pageController),
+            const SizedBox(
+              height: AppSize.s30,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width - AppSize.s30,
               padding: const EdgeInsets.symmetric(
                   horizontal: AppPadding.p20, vertical: AppPadding.p25),
+              decoration: BoxDecoration(
+                color: ColorManager.custom4GreyColor.withOpacity(0.05),
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(AppSize.s24),
+                  topLeft: Radius.circular(AppSize.s24),
+                ),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -146,7 +91,7 @@ class _ProductDetails1ScreenState extends State<ProductDetails1Screen> {
                   const SizedBox(
                     height: AppSize.s24,
                   ),
-                  CustomRatingBar(),
+                  const CustomRatingBar(),
                   const SizedBox(
                     height: AppSize.s35,
                   ),
@@ -211,8 +156,8 @@ class _ProductDetails1ScreenState extends State<ProductDetails1Screen> {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

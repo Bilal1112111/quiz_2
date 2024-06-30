@@ -24,6 +24,8 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s12)),
       onTap: () {
         setState(() {
           widget.isActive = !widget.isActive;
@@ -63,19 +65,20 @@ class _SelectLocationWidgetState extends State<SelectLocationWidget> {
                 ),
               ],
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.19,
-            ),
+            Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const CircleAvatar(
-                  backgroundColor: ColorManager.customOrangeColor,
-                  radius: AppSize.s14,
-                  child: Icon(
-                    IconManager.check,
-                    size: AppSize.s20,
+                Visibility(
+                  visible: widget.isActive,
+                  child: const CircleAvatar(
+                    backgroundColor: ColorManager.customOrangeColor,
+                    radius: AppSize.s14,
+                    child: Icon(
+                      IconManager.check,
+                      size: AppSize.s20,
+                    ),
                   ),
                 ),
                 Text(

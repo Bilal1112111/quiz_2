@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ptc2d/core/utils/values_manager.dart';
+import 'package:ptc2d/screens/widgets/custom_app_bar.dart';
 
 import '../../core/utils/color_manager.dart';
-import '../../core/utils/icon_manager.dart';
 import '../../core/utils/string_manager.dart';
-import '../../core/utils/style_manager.dart';
-import '../categories/widgets/header_icon.dart';
 import '../categories/widgets/reusable_list_item.dart';
 import '../home/widgets/deals_grid.dart';
 
@@ -29,67 +27,12 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
-      appBar: AppBar(
-        backgroundColor: ColorManager.whiteColor,
-        leadingWidth: MediaQuery.of(context).size.width * 0.75,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppPadding.p24),
-          child: Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  size: AppSize.s16,
-                ),
-              ),
-              Text(
-                StringManager.byCategoryListProduct,
-                style: StyleManager.w400TextStyle(
-                  size: AppSize.s16,
-                ),
-              ),
-            ],
-          ),
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: AppBarCustom(
+          title: StringManager.byCategoryListProduct,
+          isSearchActive: true,
         ),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: AppMargin.m10),
-            child: Row(
-              children: [
-                const HeaderIcon(
-                  icon: IconManager.search,
-                  color: ColorManager.custom1BlackColor,
-                ),
-                Stack(
-                  children: [
-                    const HeaderIcon(
-                      icon: IconManager.shoppingBag,
-                      color: ColorManager.custom1BlackColor,
-                    ),
-                    Positioned(
-                      height: AppSize.s20,
-                      width: AppSize.s20,
-                      left: AppSize.s20,
-                      bottom: AppSize.s18,
-                      child: CircleAvatar(
-                        backgroundColor: ColorManager.customOrangeColor,
-                        child: Text(
-                          '3',
-                          style: StyleManager.w600TextStyle(
-                            color: ColorManager.whiteColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Column(

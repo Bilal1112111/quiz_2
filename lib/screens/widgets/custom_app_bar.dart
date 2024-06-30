@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 
 import '../../core/utils/color_manager.dart';
 import '../../core/utils/icon_manager.dart';
-import '../../core/utils/string_manager.dart';
 import '../../core/utils/style_manager.dart';
 import '../../core/utils/values_manager.dart';
 import '../categories/widgets/header_icon.dart';
 
 class AppBarCustom extends StatelessWidget {
-  const AppBarCustom({super.key});
-
+  const AppBarCustom({super.key, this.title = '', this.isSearchActive = false});
+  final String title;
+  final bool isSearchActive;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: ColorManager.whiteColor,
+      surfaceTintColor: Colors.transparent,
       leadingWidth: MediaQuery.of(context).size.width * 0.75,
       leading: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppPadding.p24),
@@ -29,7 +30,7 @@ class AppBarCustom extends StatelessWidget {
               ),
             ),
             Text(
-              StringManager.product1Details,
+              title,
               style: StyleManager.w400TextStyle(
                 size: AppSize.s16,
               ),
@@ -42,6 +43,12 @@ class AppBarCustom extends StatelessWidget {
           margin: const EdgeInsets.only(right: AppMargin.m10),
           child: Row(
             children: [
+              isSearchActive == true
+                  ? HeaderIcon(
+                      icon: IconManager.search,
+                      color: ColorManager.custom1BlackColor,
+                    )
+                  : Container(),
               Stack(
                 children: [
                   const HeaderIcon(

@@ -27,7 +27,7 @@ class CustomAppBar extends StatelessWidget {
   final Widget title;
   @override
   Widget build(BuildContext context) {
-    final appBarHeight = MediaQuery.sizeOf(context).height * .35;
+    final appBarHeight = MediaQuery.sizeOf(context).height * .40;
     final statusBarHeight = MediaQuery.of(context).viewPadding.top;
     return SliverAppBar(
       pinned: true,

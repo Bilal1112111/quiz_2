@@ -53,6 +53,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorManager.custom1WhiteColor,
       body: CustomScrollView(
+        shrinkWrap: true,
         slivers: [
           CustomSliverAppBar(
             title: const HomePageHeader(),
@@ -99,7 +100,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.19,
+                  height: AppSize.s100 * 1.5,
                   child: ListView.builder(
                     padding: const EdgeInsets.only(
                       left: AppPadding.p10,
@@ -124,8 +125,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.28,
+                  height: MediaQuery.of(context).size.height * 0.30,
                   child: ListView.builder(
+                    shrinkWrap: true,
                     padding: const EdgeInsets.only(
                       left: AppPadding.p10,
                       top: AppPadding.p30,
